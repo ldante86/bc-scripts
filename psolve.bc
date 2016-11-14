@@ -1,0 +1,40 @@
+#!/usr/bin/bc -q
+#
+# SCRIPT: psolve.bc
+# AUTHOR: Luciano D. Cecere
+# DATE: 2014
+# PURPOSE: Pythagorean triangle solver
+
+scale=2		# set decimal
+
+define solve_hyp(x,y) {
+	print "\nHypotenuse is: "
+	return (sqrt((x ^ 2) + (y ^ 2)))
+}
+
+define solve_missing_side(x,y) {
+	if ( y > x ) {
+		print "\nNo side can be longer than the "
+		print "hypotenuse\n\n"
+		halt
+	}
+	if ( x == y ) {
+		print "\nNo side can be equal to the "
+		print "hypotenuse\n\n"
+		halt
+	}
+	print "\nMissing side is: "
+	return (sqrt((x ^ 2) - (y ^ 2)))
+}
+
+print "\nPythagorean Triangle Solver\n\n"
+print "For the missing side, type 0\n\n"
+print "First side: " ; a = read ()
+print "Second side: " ; b = read ()
+print "Hypotenuse: " ; c = read ()
+
+if ( a == 0 ) { solve_missing_side(c,b) ; print "\n" }
+if ( b == 0 ) { solve_missing_side(c,a) ; print "\n" }
+if ( c == 0 ) { solve_hyp(a,b) ; print "\n" }
+
+quit

@@ -1,0 +1,48 @@
+#!/usr/bin/bc -q
+#
+# SCRIPT: trig.bc
+# AUTHOR: Luciano D. Cecere
+# DATE: 07/2014
+# PURPOSE: This script calculates sine, cosine and tangent using
+# the Taylor series.
+
+scale=6
+
+pi = 3.14159265358979323844
+
+define factorial(a) {
+  i = a - 1
+  for ( ; i >= 1 ; i-- ) {
+   c = a * i
+   a = c
+  }
+  return a
+}
+
+define sin(x) {
+  a=((x^3)/factorial(3))
+  b=((x^5)/factorial(5))
+  c=((x^7)/factorial(7))
+  d=(((x - a) + b) - c)
+  return d
+}
+
+define cos(x) {
+  a=((x^2)/factorial(2))
+  b=((x^4)/factorial(4))
+  c=((x^6)/factorial(6))
+  d=(((1 - a) + b) - c)
+  return d
+}
+
+define tan(x) {
+  return sin(x)/cos(x)
+}
+
+print "\nNumber: " ; x = read ()
+print "\n\tsin: " ; sin(x*pi/180)
+print "\tcos: " ; cos(x*pi/180)
+print "\ttan: " ; tan(x*pi/180)
+print "\n"
+
+quit

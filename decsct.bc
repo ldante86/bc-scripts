@@ -1,0 +1,51 @@
+#!/usr/bin/bc -ql
+
+/* This script converts a number into it's equivalent
+   sine, cosine and tangent in both degree and
+   radian form. */
+
+
+scale=5
+
+define sin_d (x) {
+	print "\nsin (degree): ";
+	return s(x*0.017453293)
+}
+
+define cos_d(x) {
+	print "\ncos (degree): "
+	return c(x*0.017453293)
+}
+
+define tan_d(x) {
+	print "\ntan (degree): " 
+	return s(x*0.017453293) / c(x*0.017453293)
+}
+
+define sin_r(x) {
+	print "sin (radian): "
+	return s(x)
+}
+
+define cos_r(x) {
+	print "cos (radian): "
+	return c(x)
+}
+
+define tan_r(x) {
+	print "tan (radian): "
+	return s(x) / c(x)
+}
+
+print "\nReturn sine, cosine, tangent from a number\n"
+print "Output is in degree and radian\n"
+print "\nNumber: " ; x = read ()
+
+sin_d(x)
+sin_r(x)
+cos_d(x)
+cos_r(x)
+tan_d(x)
+tan_r(x)
+
+quit

@@ -1,0 +1,33 @@
+#!/usr/bin/bc -lq
+
+scale=5
+
+define sin (x,y) {
+  print "\nThis angle is a sine\n"
+  print "Degrees: "
+  return (x / y)
+}
+
+define cos (x,y) {
+  print "\nThis angle is a cosine\n"
+  print "Degrees: "
+  return (x / y)
+}
+
+define tan (x,y) {
+  print "\nThis angle is a tangent\n"
+  print "Degrees: "
+  return (x / y)
+}
+
+print "\nFind the sine, cosine or tangent from two known angles\n"
+print "For unknown angle, input a 0\n\n"
+print "adjacent: " ; adj = read ()
+print "opposite: " ; opp = read ()
+print "hypotenuse: " ; hyp = read ()
+
+if ( adj == 0 ) sin(opp,hyp)
+if ( opp == 0 ) cos(adj,hyp)
+if ( hyp == 0 ) tan(opp,adj)
+
+quit
